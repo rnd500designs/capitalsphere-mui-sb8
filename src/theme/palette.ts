@@ -1,5 +1,4 @@
-// src/theme/palette.ts
-import { createTheme, PaletteOptions } from '@mui/material/styles';
+import { PaletteOptions } from '@mui/material/styles';
 
 const palette: PaletteOptions = {
     primary: {

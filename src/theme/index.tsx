@@ -1,25 +1,13 @@
 import { createTheme } from '@mui/material/styles';
-import createButton from './components/Button';
-import typography from './typography';
-import './fonts.css';
-import palette from './palette'; // Import the palette
+import { buttonStyles } from './components/Button';
+import palette from './palette';
+import { appBarStyles } from './components/AppBar';
 
-// Extend the theme with the typography settings
 export const csTheme = createTheme({
-    palette,
-    typography,
-    components: {
-        MuiButton: createButton(createTheme({ palette }).palette),
-        MuiCssBaseline: {
-            styleOverrides: {
-                body: {
-                    margin: 0,
-                    padding: 0,
-                    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-                },
-            },
-        },
-    },
+  palette,
+  components: {
+    MuiButton: buttonStyles,
+    MuiAppBar: appBarStyles,
+    // Add more component customizations here
+  },
 });
-
-export const defaultTheme = createTheme({});

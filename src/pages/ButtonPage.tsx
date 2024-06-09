@@ -11,7 +11,7 @@ const ButtonPage: React.FC = () => {
             <Divider />
             
             <Typography variant="h2" gutterBottom>
-                Filled buttons
+                Contained buttons
             </Typography>
             <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

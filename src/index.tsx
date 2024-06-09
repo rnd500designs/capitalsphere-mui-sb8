@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { defaultTheme, csTheme } from './theme';
+import { csTheme } from './theme';
 
 ReactDOM.render(
   <React.StrictMode>

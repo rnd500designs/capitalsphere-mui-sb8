@@ -10,10 +10,10 @@ const NavBar: React.FC = () => {
           My App
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button color="inherit" component={Link} to="/">Home</Button>
-          <Button color="inherit" component={Link} to="/button">Button</Button>
-          <Button color="inherit" component={Link} to="/side-nav">Side Nav</Button>
-          <Button color="inherit" component={Link} to="/cards">Cards</Button>
+          <Button component={Link} to="/">Home</Button>
+          <Button component={Link} to="/button">Button</Button>
+          <Button component={Link} to="/side-nav">Side Nav</Button>
+          <Button component={Link} to="/cards">Cards</Button>
         </Box>
       </Toolbar>
     </AppBar>
