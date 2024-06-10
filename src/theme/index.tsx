@@ -11,3 +11,6 @@ export const csTheme = createTheme({
     // Add more component customizations here
   },
 });
+
+
+export const defaultTheme = createTheme();

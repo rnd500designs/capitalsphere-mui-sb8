@@ -10,8 +10,13 @@ export const buttonStyles: Components<Theme>["MuiButton"] = {
     contained: ({ theme }) => ({
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.common.white,
+      boxShadow: 'none',
       "&:hover": {
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: theme.palette.primary.light,
+      },
+      "&:focus": {
+        backgroundColor: theme.palette.primary.main,
+        boxShadow: `inset 0 0 0 2px ${theme.palette.primary.light}`,
       },
       // boxShadow: 'none',
     }),
