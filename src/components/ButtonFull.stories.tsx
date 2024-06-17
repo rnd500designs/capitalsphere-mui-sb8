@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonFull } from './ButtonFull';
+import { ButtonFull, ButtonFullProps } from './ButtonFull';
 import AddIcon from '@mui/icons-material/Add';
 
 const meta: Meta<typeof ButtonFull> = {
-  title: 'Example/Button',
+  title: 'Example/ButtonFull',
   component: ButtonFull,
   tags: ['autodocs'],
   argTypes: {
@@ -22,6 +22,9 @@ const meta: Meta<typeof ButtonFull> = {
     startIcon: {
       control: 'boolean',
     },
+    disabled: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -29,7 +32,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const getButtonProps = (args) => ({
+const getButtonProps = (args: ButtonFullProps) => ({
   ...args,
   startIcon: args.startIcon ? <AddIcon /> : undefined,
 });
@@ -44,6 +47,7 @@ export const Default: Story = {
     size: 'medium',
     color: 'primary',
     startIcon: false,
+    disabled: false,
   },
   render: (args) => <ButtonFull {...getButtonProps(args)} />,
 };
@@ -58,6 +62,7 @@ export const Focused: Story = {
     size: 'medium',
     color: 'primary',
     startIcon: false,
+    disabled: false,
   },
   parameters: {
     pseudo: { hover: false, focus: true, active: false },
@@ -70,11 +75,12 @@ export const Focused: Story = {
  */
 export const Pressed: Story = {
   args: {
-    startIcon: false,
     label: 'Button',
     variant: 'contained',
     size: 'medium',
     color: 'primary',
+    startIcon: false,
+    disabled: false,
   },
   parameters: {
     pseudo: { hover: false, focus: false, active: true },
@@ -91,8 +97,8 @@ export const Disabled: Story = {
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    disabled: true,
     startIcon: false,
+    disabled: true,
   },
   render: (args) => <ButtonFull {...getButtonProps(args)} />,
 };

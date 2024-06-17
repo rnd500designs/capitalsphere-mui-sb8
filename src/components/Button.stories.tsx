@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 import AddIcon from '@mui/icons-material/Add';
 
 const meta: Meta<typeof Button> = {
@@ -32,7 +32,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const getButtonProps = (args) => ({
+const getButtonProps = (args: ButtonProps) => ({
   ...args,
   startIcon: args.startIcon ? <AddIcon /> : undefined,
 });
