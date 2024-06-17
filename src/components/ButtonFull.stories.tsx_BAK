@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { ButtonFull } from './ButtonFull';
 import AddIcon from '@mui/icons-material/Add';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof ButtonFull> = {
   title: 'Example/Button',
-  component: Button,
+  component: ButtonFull,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -20,9 +20,6 @@ const meta: Meta<typeof Button> = {
       options: ['small', 'medium', 'large'],
     },
     startIcon: {
-      control: 'boolean',
-    },
-    disabled: {
       control: 'boolean',
     },
   },
@@ -47,9 +44,8 @@ export const Default: Story = {
     size: 'medium',
     color: 'primary',
     startIcon: false,
-    disabled: false,
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <ButtonFull {...getButtonProps(args)} />,
 };
 
 /**
@@ -62,12 +58,11 @@ export const Focused: Story = {
     size: 'medium',
     color: 'primary',
     startIcon: false,
-    disabled: false,
   },
   parameters: {
     pseudo: { hover: false, focus: true, active: false },
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <ButtonFull {...getButtonProps(args)} />,
 };
 
 /**
@@ -75,17 +70,16 @@ export const Focused: Story = {
  */
 export const Pressed: Story = {
   args: {
+    startIcon: false,
     label: 'Button',
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    startIcon: false,
-    disabled: false,
   },
   parameters: {
     pseudo: { hover: false, focus: false, active: true },
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <ButtonFull {...getButtonProps(args)} />,
 };
 
 /**
@@ -97,8 +91,8 @@ export const Disabled: Story = {
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    startIcon: false,
     disabled: true,
+    startIcon: false,
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <ButtonFull {...getButtonProps(args)} />,
 };
