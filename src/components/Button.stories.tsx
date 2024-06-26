@@ -1,12 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, ButtonProps } from './Button';
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof MuiButton> = {
   title: 'Example/Button',
-  component: Button,
+  component: MuiButton,
   tags: ['autodocs'],
   argTypes: {
+    label: {
+      control: 'text',
+    },
     variant: {
       control: 'radio',
       options: ['text', 'outlined', 'contained'],
@@ -32,8 +35,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const getButtonProps = (args: ButtonProps) => ({
+const getButtonProps = (args: MuiButtonProps & { label: string; startIcon: boolean }) => ({
   ...args,
+  children: args.label,
   startIcon: args.startIcon ? <AddIcon /> : undefined,
 });
 
@@ -49,7 +53,7 @@ export const Default: Story = {
     startIcon: false,
     disabled: false,
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...getButtonProps(args)} />,
 };
 
 /**
@@ -67,7 +71,7 @@ export const Focused: Story = {
   parameters: {
     pseudo: { hover: false, focus: true, active: false },
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...getButtonProps(args)} />,
 };
 
 /**
@@ -85,7 +89,7 @@ export const Pressed: Story = {
   parameters: {
     pseudo: { hover: false, focus: false, active: true },
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...getButtonProps(args)} />,
 };
 
 /**
@@ -100,5 +104,5 @@ export const Disabled: Story = {
     startIcon: false,
     disabled: true,
   },
-  render: (args) => <Button {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...getButtonProps(args)} />,
 };
