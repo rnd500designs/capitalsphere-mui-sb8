@@ -1,6 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
+import { Button as MuiButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
+
+const icons = {
+  None: null,
+  Add: <AddIcon />,
+  CloseIcon: <CloseIcon />,
+  // Edit: <EditIcon />,
+  // Delete: <DeleteIcon />,
+};
+
+type IconKey = keyof typeof icons;
 
 const meta: Meta<typeof MuiButton> = {
   title: 'Example/Button',
@@ -22,6 +33,14 @@ const meta: Meta<typeof MuiButton> = {
     disabled: {
       control: 'boolean',
     },
+    startIcon: {
+      control: 'select',
+      options: Object.keys(icons),
+    },
+    endIcon: {
+      control: 'select',
+      options: Object.keys(icons),
+    },
   },
 };
 
@@ -38,9 +57,15 @@ export const Default: Story = {
     size: 'medium',
     color: 'primary',
     disabled: false,
+    startIcon: 'None' as IconKey,
+    endIcon: 'None' as IconKey,
     children: 'Button',
   },
-  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
+  render: (args) => {
+    const startIcon = icons[args.startIcon as IconKey];
+    const endIcon = icons[args.endIcon as IconKey];
+    return <MuiButton {...args} startIcon={startIcon} endIcon={endIcon} />;
+  },
 };
 
 /**
@@ -52,12 +77,18 @@ export const Focused: Story = {
     size: 'medium',
     color: 'primary',
     disabled: false,
+    startIcon: 'None' as IconKey,
+    endIcon: 'None' as IconKey,
     children: 'Button',
   },
   parameters: {
     pseudo: { hover: false, focus: true, active: false },
   },
-  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
+  render: (args) => {
+    const startIcon = icons[args.startIcon as IconKey];
+    const endIcon = icons[args.endIcon as IconKey];
+    return <MuiButton {...args} startIcon={startIcon} endIcon={endIcon} />;
+  },
 };
 
 /**
@@ -69,12 +100,18 @@ export const Pressed: Story = {
     size: 'medium',
     color: 'primary',
     disabled: false,
+    startIcon: 'None' as IconKey,
+    endIcon: 'None' as IconKey,
     children: 'Button',
   },
   parameters: {
     pseudo: { hover: false, focus: false, active: true },
   },
-  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
+  render: (args) => {
+    const startIcon = icons[args.startIcon as IconKey];
+    const endIcon = icons[args.endIcon as IconKey];
+    return <MuiButton {...args} startIcon={startIcon} endIcon={endIcon} />;
+  },
 };
 
 /**
@@ -86,7 +123,13 @@ export const Disabled: Story = {
     size: 'medium',
     color: 'primary',
     disabled: true,
+    startIcon: 'None' as IconKey,
+    endIcon: 'None' as IconKey,
     children: 'Button',
   },
-  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
+  render: (args) => {
+    const startIcon = icons[args.startIcon as IconKey];
+    const endIcon = icons[args.endIcon as IconKey];
+    return <MuiButton {...args} startIcon={startIcon} endIcon={endIcon} />;
+  },
 };
