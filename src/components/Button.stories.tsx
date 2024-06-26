@@ -7,9 +7,6 @@ const meta: Meta<typeof MuiButton> = {
   component: MuiButton,
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      control: 'text',
-    },
     variant: {
       control: 'radio',
       options: ['text', 'outlined', 'contained'],
@@ -22,9 +19,6 @@ const meta: Meta<typeof MuiButton> = {
       control: 'radio',
       options: ['small', 'medium', 'large'],
     },
-    startIcon: {
-      control: 'boolean',
-    },
     disabled: {
       control: 'boolean',
     },
@@ -35,25 +29,18 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const getButtonProps = (args: MuiButtonProps & { label: string; startIcon: boolean }) => ({
-  ...args,
-  children: args.label,
-  startIcon: args.startIcon ? <AddIcon /> : undefined,
-});
-
 /**
  * Default button story.
  */
 export const Default: Story = {
   args: {
-    label: 'Button',
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    startIcon: false,
     disabled: false,
+    children: 'Button',
   },
-  render: (args) => <MuiButton {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
 };
 
 /**
@@ -61,17 +48,16 @@ export const Default: Story = {
  */
 export const Focused: Story = {
   args: {
-    label: 'Button',
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    startIcon: false,
     disabled: false,
+    children: 'Button',
   },
   parameters: {
     pseudo: { hover: false, focus: true, active: false },
   },
-  render: (args) => <MuiButton {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
 };
 
 /**
@@ -79,17 +65,16 @@ export const Focused: Story = {
  */
 export const Pressed: Story = {
   args: {
-    label: 'Button',
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    startIcon: false,
     disabled: false,
+    children: 'Button',
   },
   parameters: {
     pseudo: { hover: false, focus: false, active: true },
   },
-  render: (args) => <MuiButton {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
 };
 
 /**
@@ -97,12 +82,11 @@ export const Pressed: Story = {
  */
 export const Disabled: Story = {
   args: {
-    label: 'Button',
     variant: 'contained',
     size: 'medium',
     color: 'primary',
-    startIcon: false,
     disabled: true,
+    children: 'Button',
   },
-  render: (args) => <MuiButton {...getButtonProps(args)} />,
+  render: (args) => <MuiButton {...args} startIcon={args.startIcon ? <AddIcon /> : undefined} />,
 };
