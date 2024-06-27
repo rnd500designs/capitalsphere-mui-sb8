@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Box as MuiBox, Divider as MuiDivider } from '@mui/material';
+import { Box as MuiBox, Divider as MuiDivider, Typography as MuiTypography } from '@mui/material';
 
 const meta: Meta<typeof MuiDivider> = {
   title: 'Example/Divider',
@@ -54,4 +54,37 @@ export const Vertical: Story = {
       </MuiBox>
     )
   }
+};
+
+/**  
+ * Divider with subheader story.  
+ */
+export const WithSubheader: Story = {
+  args: {
+    variant: 'fullWidth',
+    orientation: 'horizontal',
+  },
+  render: (args) => {
+    let subheaderStyle = {};
+
+    if (args.variant === 'inset') {
+      subheaderStyle = {
+        marginLeft: '72px',
+      };
+    } else if (args.variant === 'middle') {
+      subheaderStyle = {
+        display: 'flex',
+        justifyContent: 'center',
+      };
+    }
+
+    return (
+      <MuiBox>
+        <MuiDivider {...args} />
+        <MuiTypography variant="body2" sx={{ ...subheaderStyle }}>
+          Subheader
+        </MuiTypography>
+      </MuiBox>
+    );
+  },
 };
