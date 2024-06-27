@@ -21,25 +21,35 @@ const meta: Meta<typeof MuiButton> = {
     variant: {
       control: 'radio',
       options: ['text', 'outlined', 'contained'],
+      description: 'The variant to use.',
     },
     color: {
       control: 'select',
       options: ['default', 'primary', 'secondary', 'error', 'info', 'success', 'warning'],
+      description: 'The color of the component.',
     },
     size: {
       control: 'radio',
       options: ['small', 'medium', 'large'],
+      description: 'The size of the component.',
     },
     disabled: {
       control: 'boolean',
+      description: 'If true, the component is disabled.',
     },
     startIcon: {
       control: 'select',
       options: Object.keys(icons),
+      description: 'Element placed before the children.',
     },
     endIcon: {
       control: 'select',
       options: Object.keys(icons),
+      description: 'Element placed after the children.',
+    },
+    children: {
+      control: 'text',
+      description: 'The content of the button.',
     },
   },
 };
