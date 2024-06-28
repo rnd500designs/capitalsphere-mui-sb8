@@ -59,9 +59,9 @@ export const Vertical: Story = {
 /**  
  * Divider with subheader story.  
  */
-export const WithSubheader: Story = {
+export const Subheader: Story = {
   args: {
-    variant: 'fullWidth',
+    variant: 'inset',
     orientation: 'horizontal',
   },
   render: (args) => {
