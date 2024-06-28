@@ -22,7 +22,7 @@ const meta: Meta<typeof MuiTooltip> = {
     },
     title: {
       control: 'text',
-      description: '',
+      description: 'Tooltip title.',
     },
   },
 };
