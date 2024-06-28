@@ -11,19 +11,7 @@ export const checkboxStyles: Components<Theme>["MuiCheckbox"] = {
       },
       "&:focus": {
         backgroundColor: theme.palette.action.focus,
-        border: `1px solid ${theme.palette.primary.main}`,
-      },
-      "&.MuiCheckbox-colorError": {
-        "&:hover": {
-          backgroundColor: theme.palette.error.light,
-        },
-        "&:active": {
-          backgroundColor: theme.palette.error.main,
-        },
-        "&:focus": {
-          backgroundColor: theme.palette.action.focus,
-          border: `1px solid ${theme.palette.error}`,
-        },
+        border: "1px solid",
       },
     }),
   },
