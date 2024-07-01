@@ -13,8 +13,6 @@ import {
 } from '@mui/material';
 import { PersonOutline as MuiPersonOutline, ArrowRight as MuiArrowRight } from '@mui/icons-material';
 
-import placeholder from '../assets/placeholder.png';
-
 const meta: Meta<typeof MuiList> = {
   title: 'Example/List',
   component: MuiList,
@@ -43,48 +41,48 @@ const list: ListItem[] = [
     listTextPrimary: 'List Item',
     listTextSecondary: 'Supporting line text lorem ipsum dolor sit amet, consectetur.',
     withAction: false,
-    imageSrc: '',
-    imageAlt: '',
+    imageSrc: 'assets/placeholder.png',
+    imageAlt: 'alt 1',
   },
   {
     id: 2,
     listTextPrimary: 'List Item',
     listTextSecondary: 'Supporting line text lorem ipsum dolor sit amet, consectetur.',
     withAction: true,
-    imageSrc: '',
-    imageAlt: '',
+    imageSrc: '/assets/placeholder.png',
+    imageAlt: 'alt 2',
   },
   {
     id: 3,
     listTextPrimary: 'List Item',
     listTextSecondary: 'Supporting line text lorem ipsum dolor sit amet, consectetur.',
     withAction: false,
-    imageSrc: '',
-    imageAlt: '',
+    imageSrc: '/assets/placeholder.png',
+    imageAlt: 'alt 3',
   },
   {
     id: 4,
     listTextPrimary: 'List Item',
     listTextSecondary: 'Supporting line text lorem ipsum dolor sit amet, consectetur.',
     withAction: true,
-    imageSrc: '',
-    imageAlt: '',
+    imageSrc: '/assets/placeholder.png',
+    imageAlt: 'alt 4',
   },
   {
     id: 5,
     listTextPrimary: 'List Item',
     listTextSecondary: '',
     withAction: false,
-    imageSrc: '',
-    imageAlt: '',
+    imageSrc: '/assets/placeholder.png',
+    imageAlt: 'alt 5',
   },
   {
     id: 6,
     listTextPrimary: 'List Item',
     listTextSecondary: '',
     withAction: true,
-    imageSrc: '',
-    imageAlt: '',
+    imageSrc: '/assets/placeholder.png',
+    imageAlt: 'alt 6',
   },
 ]
 
@@ -219,7 +217,7 @@ export const Image: Story = {
               <MuiBox component="div" className="squareImg">
                 <MuiBox
                   component="img"
-                  src={placeholder}
+                  src={listItem.imageSrc}
                   alt="alt"
                   className="squareImage"
                 />
@@ -255,7 +253,7 @@ export const FullWidthImage: Story = {
             <MuiListItemIcon>
               <MuiBox
                 component="img"
-                src={placeholder}
+                src={listItem.imageSrc}
                 alt="alt"
               />
             </MuiListItemIcon>
