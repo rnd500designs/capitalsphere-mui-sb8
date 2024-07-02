@@ -4,6 +4,7 @@ export const alertStyles: Components<Theme>["MuiAlert"] = {
   styleOverrides: {
     root: ({ theme }) => ({
       color: theme.palette.text.secondary,
+      maxWidth: "360px",
       "& .MuiAlertTitle-root": {
         color: theme.palette.text.primary,
       },
