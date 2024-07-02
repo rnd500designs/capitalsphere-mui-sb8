@@ -1,39 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState, SyntheticEvent } from 'react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { useState, SyntheticEvent } from "react";
 import {
   Alert as MuiAlert,
   AlertTitle as MuiAlertTitle,
-  Box as MuiBox,
   Button as MuiButton,
   IconButton as MuiIconButton,
   Snackbar as MuiSnackbar,
-  SnackbarOrigin as MuiSnackbarOrigin,
-} from '@mui/material';
+} from "@mui/material";
 import {
   CancelOutlined as MuiErrorIcon,
   Check as MuiCheckIcon,
   Close as MuiCloseIcon,
   InfoOutlined as MuiInfoIcon,
   WarningAmberOutlined as MuiWarningIcon,
-} from '@mui/icons-material'
+} from "@mui/icons-material"
 
 const meta: Meta<typeof MuiAlert> = {
-  title: 'Example/Banner Notification',
+  title: "Example/Banner Notification",
   component: MuiAlert,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     children: {
-      control: 'text',
-      description: 'The content of the component.'
+      control: "text",
+      description: "The content of the component."
     },
     severity: {
-      control: 'select',
-      options: ['error', 'info', 'success', 'warning'],
-      description: 'The severity of the alert. This defines the color and icon used.'
+      control: "select",
+      options: ["error", "info", "success", "warning"],
+      description: "The severity of the alert. This defines the color and icon used."
     },
     title: {
-      control: 'text',
-      description: 'The title of the component.'
+      control: "text",
+      description: "The title of the component."
     }
   },
 }
@@ -47,34 +45,34 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    severity: 'info',
-    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    title: 'Heading',
+    severity: "info",
+    children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    title: "Heading",
   },
   render: (args) => {
     let icon = null;
 
     switch (args.severity) {
-      case 'error':
+      case "error":
         icon = <MuiErrorIcon fontSize="inherit" />;
         break;
-      case 'warning':
+      case "warning":
         icon = <MuiWarningIcon fontSize="inherit" />;
         break;
-      case 'info':
+      case "info":
         icon = <MuiInfoIcon fontSize="inherit" />;
         break;
-      case 'success':
+      case "success":
         icon = <MuiCheckIcon fontSize="inherit" />;
         break;
       default:
         break;
     }
 
-    const [, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
-    const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
-      if (reason === 'clickaway') {
+    const handleClose = (event?: SyntheticEvent | Event, reason?: string) => {
+      if (reason === "clickaway") {
         return;
       }
 
@@ -82,7 +80,11 @@ export const Default: Story = {
     };
 
     return (
-      <MuiBox maxWidth="360px">
+      <MuiSnackbar
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+      >
         <MuiAlert
           icon={icon}
           severity={args.severity}
@@ -101,13 +103,9 @@ export const Default: Story = {
           <MuiAlertTitle>{args.title}</MuiAlertTitle>
           {args.children}
         </MuiAlert>
-      </MuiBox>
+      </MuiSnackbar>
     )
   }
-}
-
-interface SnackbarState extends MuiSnackbarOrigin {
-  open: boolean;
 }
 
 /**
@@ -115,39 +113,38 @@ interface SnackbarState extends MuiSnackbarOrigin {
  */
 export const SnackbarInactive: Story = {
   args: {
-    severity: 'error',
-    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    title: 'Heading',
+    severity: "info",
+    children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    title: "Heading",
   },
   render: (args) => {
-    const [snackbarState, setSnackbarState] = useState<SnackbarState>({
-      open: false,
-      vertical: 'top',
-      horizontal: 'center',
-    });
-    const { vertical, horizontal, open } = snackbarState;
+    const [open, setOpen] = useState(false);
 
-    const handleClick = (newState: MuiSnackbarOrigin) => () => {
-      setSnackbarState({ ...newState, open: true });
+    const handleClick = () => {
+      setOpen(true);
     };
 
-    const handleClose = () => {
-      setSnackbarState({ ...snackbarState, open: false });
+    const handleClose = (event?: SyntheticEvent | Event, reason?: string) => {
+      if (reason === "clickaway") {
+        return;
+      }
+
+      setOpen(false);
     };
 
     let icon = null;
 
     switch (args.severity) {
-      case 'error':
+      case "error":
         icon = <MuiErrorIcon fontSize="inherit" />;
         break;
-      case 'warning':
+      case "warning":
         icon = <MuiWarningIcon fontSize="inherit" />;
         break;
-      case 'info':
+      case "info":
         icon = <MuiInfoIcon fontSize="inherit" />;
         break;
-      case 'success':
+      case "success":
         icon = <MuiCheckIcon fontSize="inherit" />;
         break;
       default:
@@ -155,36 +152,34 @@ export const SnackbarInactive: Story = {
     }
 
     return (
-      <MuiBox height="200px">
-        <MuiButton onClick={handleClick({ vertical: 'bottom', horizontal: 'left' })} variant='contained'>Open Snackbar</MuiButton>
+      <>
+        <MuiButton onClick={handleClick} variant="contained">Open Snackbar</MuiButton>
         <MuiSnackbar
           open={open}
           autoHideDuration={5000}
           onClose={handleClose}
-          anchorOrigin={{ vertical, horizontal }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         >
-          <MuiBox maxWidth="360px">
-            <MuiAlert
-              icon={icon}
-              severity={args.severity}
-              variant="outlined"
-              action={
-                <MuiIconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={handleClose}
-                >
-                  <MuiCloseIcon fontSize="inherit" />
-                </MuiIconButton>
-              }
-            >
-              <MuiAlertTitle>{args.title}</MuiAlertTitle>
-              {args.children}
-            </MuiAlert>
-          </MuiBox>
+          <MuiAlert
+            icon={icon}
+            severity={args.severity}
+            variant="outlined"
+            action={
+              <MuiIconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={handleClose}
+              >
+                <MuiCloseIcon fontSize="inherit" />
+              </MuiIconButton>
+            }
+          >
+            <MuiAlertTitle>{args.title}</MuiAlertTitle>
+            {args.children}
+          </MuiAlert>
         </MuiSnackbar >
-      </MuiBox>
+      </>
     )
   }
 }
