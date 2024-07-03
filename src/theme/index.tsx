@@ -6,6 +6,7 @@ import { dividerStyles } from './components/Divider';
 import { checkboxStyles } from './components/Checkbox';
 import { radioStyles } from './components/Radio';
 import { tooltipStyles } from './components/Tooltip';
+import { chipStyles } from './components/Chip';
 
 export const csTheme = createTheme({
   palette,
@@ -16,6 +17,7 @@ export const csTheme = createTheme({
     MuiDivider: dividerStyles,
     MuiRadio: radioStyles,
     MuiTooltip: tooltipStyles,
+    MuiChip: chipStyles,
     // Add more component customizations here
   },
 });
