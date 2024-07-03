@@ -27,6 +27,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * Default media placeholder story.
+ */
 export const Default: Story = {
   args: {
     component: "img",
